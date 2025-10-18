@@ -7,9 +7,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation -->
+  <div class="bubbles"></div>
+
   <nav class="navbar">
-    <div class="logo">easyrides.lk</div>
+    <div class="logo">
+      <span class="rainbow">e</span>
+      <span class="rainbow">a</span>
+      <span class="rainbow">s</span>
+      <span class="rainbow">y</span>
+      <span class="rainbow">r</span>
+      <span class="rainbow">i</span>
+      <span class="rainbow">d</span>
+      <span class="rainbow">e</span>
+      <span class="rainbow">s</span>
+      <span class="rainbow">.</span>
+      <span class="rainbow">l</span>
+      <span class="rainbow">k</span>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="ad_post.html">Post Ad</a></li>
@@ -17,7 +32,6 @@
     </ul>
   </nav>
 
-  <!-- Post Ad Form -->
   <div class="container">
     <h1>Post Your Vehicle Ad</h1>
     <form id="vehicleAdForm">
@@ -38,6 +52,9 @@
       <label>Price per day (LKR):</label>
       <input type="number" name="price" placeholder="Enter price per day" required>
 
+      <label>Phone Number:</label>
+      <input type="tel" name="phone" placeholder="Enter your phone number" required>
+
       <label>Description:</label>
       <textarea name="description" placeholder="Enter vehicle description" required></textarea>
 
@@ -45,34 +62,31 @@
     </form>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p>© 2023-2025 | easyrides.lk</p>
   </footer>
 
   <script>
-    document.getElementById('vehicleAdForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default form submission
-
+    document.getElementById('vehicleAdForm').addEventListener('submit', function(e){
+      e.preventDefault();
       const form = e.target;
       const name = form.name.value;
       const type = form.type.value;
       const price = form.price.value;
+      const phone = form.phone.value;
       const description = form.description.value;
 
-      // Prepare message to send via WhatsApp
       const message = `New Vehicle Ad:
 Name: ${name}
 Type: ${type}
 Price per day: ${price}
+Phone: ${phone}
 Description: ${description}`;
 
       const encodedMessage = encodeURIComponent(message);
       const whatsappNumber = '+94779403482';
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-      // Open WhatsApp link in new tab
-      window.open(whatsappURL, '_blank');
+      window.open(whatsappURL,'_blank');
     });
   </script>
 </body>
