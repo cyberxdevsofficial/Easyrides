@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Vehicle Ad - easyrides.lk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">easyrides.lk</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ad_post.html">Post Ad</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Post Ad Form -->
+  <div class="container">
+    <h1>Post Your Vehicle Ad</h1>
+    <form id="vehicleAdForm">
+      <label>Vehicle Name:</label>
+      <input type="text" name="name" placeholder="Enter vehicle name" required>
+
+      <label>Type:</label>
+      <select name="type" required>
+        <option value="">Select type</option>
+        <option value="Car">Car</option>
+        <option value="Van">Van</option>
+        <option value="Motorbike">Motorbike</option>
+        <option value="Jeep">Jeep</option>
+        <option value="Truck/Lorry">Truck/Lorry</option>
+        <option value="Tuk Tuk">Tuk Tuk</option>
+      </select>
+
+      <label>Price per day (LKR):</label>
+      <input type="number" name="price" placeholder="Enter price per day" required>
+
+      <label>Description:</label>
+      <textarea name="description" placeholder="Enter vehicle description" required></textarea>
+
+      <button type="submit">Submit Post Ad</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2023-2025 | easyrides.lk</p>
+  </footer>
+
+  <script>
+    document.getElementById('vehicleAdForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const form = e.target;
+      const name = form.name.value;
+      const type = form.type.value;
+      const price = form.price.value;
+      const description = form.description.value;
+
+      // Prepare message to send via WhatsApp
+      const message = `New Vehicle Ad:
+Name: ${name}
+Type: ${type}
+Price per day: ${price}
+Description: ${description}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappNumber = '+94779403482';
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+      // Open WhatsApp link in new tab
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+</body>
+</html>
