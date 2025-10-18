@@ -1,10 +1,13 @@
-function searchCategory() {
+function searchCategory(){
   const category = document.getElementById('vehicleCategory').value;
-  if(category) {
+  if(category){
     alert(`You searched for: ${category}`);
-    // Future: redirect to filtered vehicles page
-    // window.location.href = `vehicles.html?category=${category}`;
   } else {
     alert('Please select a vehicle type.');
   }
+}
+
+function toggleMenu(){
+  const nav = document.querySelector('.navbar .nav-links');
+  nav.classList.toggle('show');
 }
